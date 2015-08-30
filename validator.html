@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />     
+
+ <title>Lab 10 - Form Validation</title>
+      
+   <style>
+           table {
+	              float:left;
+	              margin-left:200px;
+	              cellspacing="2";
+	              cellpadding="2";
+	              border="1" ;
+	              background-color: pink;
+	              height: 250px;
+	              width:40%;
+	             }
+	       td {
+		        color: red;
+		        font-family: Georgia;
+		        font-size: 15px;
+		        
+		       }      
+		       input {
+			       width: 200px;
+			       }
+		      </style>
+		      
+		      <!-- IT581 Working with Validation -->
+              <!-- Author:  Devendra Prasai -->
+              <!-- Date: 07/17/2015 -->
+            
+   </head>
+      <body>
+      <form action=" " name="validForm" onsubmit="return(validate());">
+         <table >
+            
+            <tr>
+               <td align="right">Name</td>
+               <td><input type="text" name="Name" /></td>
+            </tr>
+            
+            <tr>
+               <td align="right">EMail</td>
+               <td><input type="text" id="txtEmail" name="EMail" /></td>
+            </tr>
+            
+            <tr>
+               <td align="right">Zip Code</td>
+               <td><input type="text" name="Zip" /></td>
+            </tr>
+            
+            <tr>
+               <td align="right">Country</td>
+               <td>
+                  <select name="Country">
+                     <option value="-1" selected>[choose yours]</option>
+                     <option value="1">USA</option>
+                     <option value="2">China</option>
+                     <option value="3">Japan</option>
+                     <option value="4">UK</option>
+                     <option value="5">Canada</option>
+                     <option value="6">France</option>
+                     <option value="7">Germany</option>
+                     <option value="8">Italy</option>
+                     <option value="9">Switzerland</option>
+                  </select>
+               </td>
+            </tr>
+            
+            <tr>
+               <td align="right"></td>
+               <td><input type="submit" value="Submit" /></td>
+            </tr>
+            
+         </table>
+      </form>
+      
+           <script type="text/javascript">
+   <!--
+      // Form validation code will come here.
+      function validate()
+      {
+	      var mail = document.getElementById('txtEmail');
+          var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      
+         if( document.validForm.Name.value == "" )
+         {
+            alert( "Please provide your name!" );
+            document.validForm.Name.focus() ;
+            return false;
+         }
+         
+         if (!filter.test(txtEmail.value)) {
+              alert('Please provide a valid email address');
+              document.validForm.txtEmail.focus(); 
+              return false;
+          } 
+         
+         if( document.validForm.Zip.value == "" ||
+         isNaN( document.validForm.Zip.value ) ||
+         document.validForm.Zip.value.length != 5 )
+         {
+            alert( "Please provide a zip in 5-digit format." );
+            document.validForm.Zip.focus() ;
+            return false;
+         }
+         
+         if( document.validForm.Country.value == "-1" )
+         {
+            alert( "Please provide your country!" );
+            return false;
+         }
+         return( true );
+      }
+   //-->
+</script>
+      
+   </body>
+</html>
